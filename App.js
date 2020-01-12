@@ -1,12 +1,32 @@
-import React, { useState } from 'react';
-import { Text, View, Button } from 'react-native';
+import React from 'react';
+
+import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
 
 export default function App() {
 	return (
-  <View style={{ flex: 1 }}>
-    <View style={{flex : 2,backgroundColor : 'yellow', height: 50, width: '100%'}}></View>
-    <View style={{flex: 4,backgroundColor : 'red', height: 50, width: '100%'}}></View>
-    <View style={{flex: 6,backgroundColor : 'green', height: 50, width: '100%'}}></View>
-    </View>
-  )
+		<View style={styles.screen}>
+			<View style={styles.inputContainer}>
+        <TextInput placeholder="Enter Your Task" style={styles.input}
+         />
+				<Button title="Add" />
+			</View>
+		</View>
+	);
 }
+
+const styles = StyleSheet.create({
+	screen: {
+		padding: 50
+	},
+	inputContainer: {
+    flexDirection: 'row',
+    justifyContent : 'space-between',
+    alignItems : 'center'
+  },
+  input : {
+    borderColor : 'black',
+    borderWidth : 2,
+    padding : 10,
+    width : '80%'
+  }
+});
