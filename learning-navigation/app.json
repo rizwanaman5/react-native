@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "taskmang",
-    "slug": "taskm",
+    "name": "learning-navigation",
+    "slug": "learning-navigation",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
