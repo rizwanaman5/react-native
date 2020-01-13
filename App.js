@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
 
-import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
+import { StyleSheet, View, Text, TextInput, Button, ScrollView, FlatList } from 'react-native';
+
+//import TaskItem
+import TaskItem from "./components/TaskItem";
 
 export default function App() {
 
-
+//Hook2
   const [enteredTask, setEnteredTask] = useState("");
+//Hook2
+  const [enteredTasks, setEnteredTasks] = useState([]);
 
   function taskInputHandler(enteredText){
     setEnteredTask(enteredText);
+  }
+
+  function addTasksHandler(){
+    setEnteredTasks((enteredTasks)=> [...enteredTasks, {id : Math.random().toString(), value : enteredTask}])
   }
 
   console.log(enteredTask);
@@ -20,8 +29,15 @@ export default function App() {
           onChangeText={taskInputHandler}
           value={enteredTask}
          />
-				<Button title="Add" />
+				<Button title="Add"  onPress={addTasksHandler}/>
 			</View>
+      <FlatList 
+          keyExtractor={(item,index)=> item.id}
+          data = {enteredTasks}
+          renderItem = {(itemdata) => ( <TaskItem title={itemdata.item.value} />)}
+      />
+       
+      
 		</View>
 	);
 }
@@ -41,4 +57,5 @@ const styles = StyleSheet.create({
     padding : 10,
     width : '80%'
   }
+  
 });
