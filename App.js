@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { StyleSheet, View, Text, TextInput, Button } from 'react-native';
 
 export default function App() {
+
+
+  const [enteredTask, setEnteredTask] = useState("");
+
+  function taskInputHandler(enteredText){
+    setEnteredTask(enteredText);
+  }
+
+  console.log(enteredTask);
+
 	return (
 		<View style={styles.screen}>
 			<View style={styles.inputContainer}>
-        <TextInput placeholder="Enter Your Task" style={styles.input}
+        <TextInput placeholder="Enter Your Task2" style={styles.input}
+          onChangeText={taskInputHandler}
+          value={enteredTask}
          />
 				<Button title="Add" />
 			</View>
